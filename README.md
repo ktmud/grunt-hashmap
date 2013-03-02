@@ -58,14 +58,18 @@ Default value: `'#{= dest}/hash.json'`
 
 Where to save the hash mapping json file.
 Available variables are `dest`, `cwd`.
-You can always use `#{= grunt.config.get(...) }' to access config data in your `Gruntfile`.
-Can set to `null` to disable the output.
+You can always use `#{= grunt.config.get(...) }'` to access config data in your `Gruntfile`.
+
+Set to `null` will disable the output.
 
 The output format:
-    {
-      "a/b.js": "a93n3f2",
-      "foo.css": "mof33mao"
-    }
+
+```js
+{
+  "a/b.js": "aaa93n3f2",
+  "foo.css": "maaof33mao"
+}
+```
 
 #### options.etag <a id="option-etag"></a>
 Type: `String`
@@ -77,32 +81,32 @@ you can set a "etag" format to use as file version.
 
 Set `etag` to `true` will use the default format: `#{= size}-#{= +mtime}`.
 
-All values in a `[fs.Stats](http://nodejs.org/api/fs.html#fs_class_fs_stats)` result are available.
+All values in a [fs.Stats](http://nodejs.org/api/fs.html#fs_class_fs_stats) result are available.
 
-## options.algorithm
+#### options.algorithm
 Type: `String`
 Default value: `'md5'`
 
 The algorithm to generate hash digests. Depend on the version of OpenSSL on the platform.
 Examples are `'sha1'`, `'md5'`, `'sha256'`, etc.
 
-## options.hashlen
+#### options.hashlen
 Type: `Number`
 Default value: `10`
 
 The length of a hash digest hex value.
 
-## options.rename
+#### options.rename
 Type: `String`
-Default value: `'#{= dirname}/#{= basename}_#{= hash}#{= extname}'`
+Default value: `'#{= dirname}/#{= basename}\_#{= hash}#{= extname}'`
 
 Rename files, to include a hash in it. This is often for safely bursting cache.
 Available variables are:
 
   - **hash**      - The hash/etag value.
-  - **filepath**  - The path of the file.
   - **dest**      - The destination directory.
   - **cwd**       - The `cwd` you setted for `files` prop section.
+  - **filepath**  - The path of the file.
   - **basename**  - The basename of the file, with extension name excluded.
   - **dirname**   - The directory name of the file.
   - **extname**   - The extension name of the file.
@@ -117,18 +121,17 @@ Examples:
       extname: "js"
     }
 
-With the default rename `#{= dirname}/#{= basename}_#{= hash}#{= extname}`,
-the result will be something like `"abc/defg/hijk_e8e7f9e4.js"`.
+With the default rename format, the result will be something like `"abc/defg/hijk\_e8e7f9e4.js"`.
 
 Will raise a warning if the renamed target is not in dest directory.
   
-## options.keep
+#### options.keep
 Type: `String`
 Default value: `true`
 
 Whether to keep the original files after rename it.
 
-## options.merge
+#### options.merge
 Type: `String`
 Default value: `false`
 
@@ -180,4 +183,8 @@ unless `hash.json` is removed. But of course, you can always set up a `grunt cle
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+```
+0.1.0 -  first release
+```
+
