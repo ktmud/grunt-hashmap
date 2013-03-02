@@ -71,4 +71,13 @@ exports.hashmap = {
 
     test.done();
   },
+  merged: function(test) {
+    test.expect(1);
+
+    var result = grunt.file.readJSON('tmp/etag/hashmap.json');
+
+    test.ok('blank.gif' in result && 'a.js' in result, 'Mapping merged.');
+
+    test.done();
+  },
 };

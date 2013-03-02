@@ -146,7 +146,7 @@ module.exports = function(grunt) {
 
           var jsonfile = typeof options.output === 'string' ? options.output : defaultOutput;
           jsonfile = grunt.template.process(jsonfile, tmpl_option);
-          if (grunt.file.exists(jsonfile)) {
+          if (options.merge && grunt.file.exists(jsonfile)) {
             var old = grunt.file.readJSON(jsonfile);
             if (typeof old === 'object') {
               for (var k in old) {

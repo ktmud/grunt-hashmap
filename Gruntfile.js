@@ -41,7 +41,7 @@ module.exports = function(grunt) {
           output: '#{=dest}/hashmap.json'
         },
         cwd: 'test/assets',
-        src: '**',
+        src: 'blank.gif',
         dest: 'tmp/etag'
       },
       renamed: {
@@ -51,6 +51,16 @@ module.exports = function(grunt) {
         cwd: 'test/assets',
         src: 'mod/**',
         dest: 'tmp/renamed'
+      },
+      merged: {
+        options: {
+          merge: true,
+          etag: true,
+          output: 'tmp/etag/hashmap.json'
+        },
+        cwd: 'test/assets',
+        src: 'a.js',
+        dest: 'tmp/merged'
       },
     },
 
