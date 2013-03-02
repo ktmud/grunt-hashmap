@@ -1,6 +1,5 @@
 # grunt-hashmap [![Build Status](https://travis-ci.org/ktmud/grunt-hashmap.png)](https://travis-ci.org/ktmud/grunt-hashmap)
 
-
 > Generate a hash mapping for your assets files, in order to burst cache
 
 ## Getting Started
