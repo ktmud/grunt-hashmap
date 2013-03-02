@@ -25,6 +25,7 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       output: defaultOutput,
+      merge: false,
       etag: null,
       algorithm: 'md5', // the algorithm to create the hash
       rename: defaultRename, // save the original file as what
