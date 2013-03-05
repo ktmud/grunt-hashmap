@@ -26,6 +26,7 @@ module.exports = function(grunt) {
     var options = this.options({
       output: defaultOutput,
       merge: false,
+      encoding: null, // encoding of file contents
       etag: null,
       algorithm: 'md5', // the algorithm to create the hash
       rename: defaultRename, // save the original file as what
@@ -39,6 +40,7 @@ module.exports = function(grunt) {
       delimiters: '#{ }',
     };
 
+    var encoding = options.encoding;
     var rename_format = (typeof options.rename === 'string') ? options.rename : defaultRename;
 
     var done = this.async();
@@ -82,6 +84,9 @@ module.exports = function(grunt) {
           //var contents = grunt.file.read(r, { encoding: null });
           var shasum = crypto.createHash(options.algorithm);
           s.on('data', function(data) {
+            if (encoding) {
+              data = data.toString(encoding);
+            }
             shasum.update(data);
           });
           s.on('end', function() {
@@ -97,7 +102,7 @@ module.exports = function(grunt) {
         grunt.verbose.writeln(
           (options.etag ? 'Etag' : 'Hash') + ' for ' + filepath + ': ' + d);
 
-        save(filepath);
+        dest && save(filepath);
 
         if (Object.keys(mapping).length === src.length) {
           output();
