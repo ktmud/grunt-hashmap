@@ -62,6 +62,12 @@ module.exports = function(grunt) {
       });
       var mapping = {};
       
+      if (!src.length) {
+        grunt.log.writeln('No source file..');
+        done();
+        return;
+      }
+
       if (grunt.file.isFile(dest)) {
         grunt.log.warn('Destination must be a directory.');
       }
