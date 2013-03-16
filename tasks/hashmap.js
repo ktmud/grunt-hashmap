@@ -68,7 +68,7 @@ module.exports = function(grunt) {
         return;
       }
 
-      if (grunt.file.isFile(dest)) {
+      if (dest && grunt.file.isFile(dest)) {
         grunt.log.warn('Destination must be a directory.');
       }
 
