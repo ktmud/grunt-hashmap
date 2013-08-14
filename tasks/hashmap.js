@@ -180,14 +180,16 @@ module.exports = function(grunt) {
             sortedObject = {};
 
         for (var o in obj) {
-          if (obj.hasOwnProperty(o)) arr.push(o);
+          if (obj.hasOwnProperty(o)) {
+            arr.push(o);
+          }
         }
 
         arr.sort();
 
         for (var i = 0, l = arr.length; i < l; i++) {
           sortedObject[arr[i]] = obj[arr[i]];
-        };
+        }
 
         return sortedObject;
       }
