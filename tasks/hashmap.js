@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         }
       });
       var mapping = {};
-      
+
       if (!src.length) {
         grunt.log.writeln('No source file..');
         done();
@@ -168,10 +168,28 @@ module.exports = function(grunt) {
               }
             }
           }
+          mapping = sortObject(mapping);
           grunt.file.write(jsonfile, JSON.stringify(mapping));
           grunt.log.oklns('Hashmap "' + jsonfile + '" saved.');
         }
         done();
+      }
+
+      function sortObject(obj) {
+        var arr = [],
+            sortedObject = {};
+
+        for (var o in obj) {
+          if (obj.hasOwnProperty(o)) arr.push(o);
+        }
+
+        arr.sort();
+
+        for (var i = 0, l = arr.length; i < l; i++) {
+          sortedObject[arr[i]] = obj[arr[i]];
+        };
+
+        return sortedObject;
       }
     });
   });
