@@ -50,6 +50,52 @@ grunt.initConfig({
 })
 ```
 
+In your express application, add a **static_url** generator to template helpers:
+
+``` javascript
+var path = require('path');
+var hash_cache = require('./static/hash.json');
+
+var reg_css_js = /\.(css|js)$/;
+
+// change these consts according to the app's running environment
+var STATIC_ROOT = 'http://img.example.com';
+var DEBUG = false;
+
+function static_url(p) {
+  if (p[0] == '/') p = p.slice(1);
+  if (DEBUG || !reg_css_js.test(p)) return STATIC_ROOT + '/' + p;
+
+  var hash = hash_cache[p];
+  if (hash) {
+    var ext = path.extname(p);
+    p = path.join(path.dirname(p), path.basename(p, ext) + '_' + hash + ext); 
+  }
+  return STATIC_ROOT + '/' + p;
+}
+
+
+app.locals({
+  static: static_url
+});
+```
+
+In your template, always refer to static file url like this:
+
+``` jade
+script(src="#{static('/css/abc.css')}")
+```
+
+The output would be:
+
+```
+<script type="text/javascript" src="http://img.example.com/css/abc_83hfa2gi.css"></script>
+
+<!-- or when in debug mode: -->
+<script type="text/javascript" src="/css/abc.css"></script>
+```
+
+
 ### Options
 
 #### options.output
