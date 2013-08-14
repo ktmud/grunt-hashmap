@@ -14,14 +14,11 @@ var defaultOutput = '#{= dest}/hash.json';
 var defaultEtag = '#{= blksize}-#{= +mtime}';
 var defaultRename = '#{= dirname}/#{= basename}_#{= hash}#{= extname}';
 
-//var defaultEtag = '#{size}-#{+mtime}';
-//var defaultRename = '#{dirname}/#{basename}_#{hash}#{extname}';
-
 module.exports.defaultEtag = defaultEtag;
 
 module.exports = function(grunt) {
 
-  grunt.registerMultiTask('hashmap', 'Your task description goes here.', function() {
+  grunt.registerMultiTask('hashmap', 'Create version mapping for your static files.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       output: defaultOutput,
