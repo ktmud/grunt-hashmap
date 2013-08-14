@@ -62,6 +62,15 @@ module.exports = function(grunt) {
         src: 'a.js',
         dest: 'tmp/merged'
       },
+      sorted: {
+        options: {
+          output: 'tmp/sorted/hashmap.json'
+        },
+        cwd: 'test/assets',
+        // Include these in a non-sorted order, so we can verify the output is sorted
+        src: ['blank.gif', 'mod/*', 'a.js', 'hash.json', 'a.css'],
+        dest: 'tmp/sorted'
+      },
     },
 
     // Unit tests.
