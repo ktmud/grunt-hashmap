@@ -53,7 +53,7 @@ exports.hashmap = {
     var fs = require('fs');
     function getEtag(filepath) {
       var stats = fs.statSync(process.cwd() + '/' + filepath);
-      return stats.blksize + '-' + (+stats.mtime);
+      return stats.size + '-' + (+stats.mtime);
     }
 
     test.ok(result['blank.gif'] === getEtag('test/assets/blank.gif'), 'Etag matched.');
