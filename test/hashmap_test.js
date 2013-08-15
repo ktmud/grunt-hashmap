@@ -80,4 +80,23 @@ exports.hashmap = {
 
     test.done();
   },
+  sorted: function(test) {
+    test.expect(6);
+
+    var result = grunt.file.readJSON('tmp/sorted/hashmap.json');
+
+    var lastItem;
+    for (var item in result) {
+      if (lastItem === undefined) {
+        lastItem = item;
+      }
+
+      // Make sure the current item comes after the previous item in the sort order
+      test.ok(item >= lastItem, 'Items not in sorted order.');
+
+      lastItem = item;
+    }
+
+    test.done();
+  }
 };
