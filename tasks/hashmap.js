@@ -11,7 +11,7 @@ var crypto = require('crypto');
 var path = require('path');
 var fs = require('fs');
 var defaultOutput = '#{= dest}/hash.json';
-var defaultEtag = '#{= blksize}-#{= +mtime}';
+var defaultEtag = '#{= size}-#{= +mtime}';
 var defaultRename = '#{= dirname}/#{= basename}_#{= hash}#{= extname}';
 
 module.exports.defaultEtag = defaultEtag;
@@ -105,7 +105,9 @@ module.exports = function(grunt) {
         grunt.verbose.writeln(
           (options.etag ? 'Etag' : 'Hash') + ' for ' + filepath + ': ' + d);
 
-        dest && save(filepath);
+        if (dest) {
+          save(filepath);
+        }
 
         if (Object.keys(mapping).length === src.length) {
           output();
@@ -166,7 +168,7 @@ module.exports = function(grunt) {
             }
           }
           mapping = sortObject(mapping);
-          grunt.file.write(jsonfile, JSON.stringify(mapping));
+          grunt.file.write(jsonfile, JSON.stringify(mapping, null, 2));
           grunt.log.oklns('Hashmap "' + jsonfile + '" saved.');
         }
         done();
