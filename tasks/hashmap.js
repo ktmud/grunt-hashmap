@@ -174,7 +174,7 @@ module.exports = function(grunt) {
 
         // invoke callback function if provided
         if (typeof options.done === "function") {
-          options.done(mapping, function() { done(); });
+          options.done(mapping, done);
         }
         else {
           done();
