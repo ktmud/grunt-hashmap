@@ -35,6 +35,14 @@ module.exports = function(grunt) {
         src: '**',
         dest: 'tmp/default'
       },
+      salt: {
+        options: {
+          salt: 'cachebuster5000'
+        },
+        cwd: 'test/assets',
+        src: '**',
+        dest: 'tmp/salt'
+      },
       etag: {
         options: {
           etag: true,
@@ -70,7 +78,7 @@ module.exports = function(grunt) {
         // Include these in a non-sorted order, so we can verify the output is sorted
         src: ['blank.gif', 'mod/*', 'a.js', 'hash.json', 'a.css'],
         dest: 'tmp/sorted'
-      },
+      }
     },
 
     // Unit tests.
