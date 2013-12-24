@@ -29,6 +29,7 @@ module.exports = function(grunt) {
       rename: defaultRename, // save the original file as what
       keep: true, // should we keep the original file or not
       hashlen: 10, // length for hashsum digest
+      salt: null   // salt to add to the file contents before hashing
     });
 
     grunt.template.addDelimiters('#{ }', '#{', '}');
@@ -93,6 +94,9 @@ module.exports = function(grunt) {
             shasum.update(data);
           });
           s.on('end', function() {
+            if (options.salt) {
+              shasum.update(options.salt);
+            }
             d = shasum.digest('hex').slice(0, options.hashlen);
             stash(filepath, d);
           });

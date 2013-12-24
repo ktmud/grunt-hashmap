@@ -45,6 +45,16 @@ exports.hashmap = {
 
     test.done();
   },
+  salt: function(test) {
+    test.expect(1);
+
+    var result1 = grunt.file.readJSON('tmp/default/hash.json');
+    var result2 = grunt.file.readJSON('tmp/salt/hash.json');
+
+    test.ok(result1['a.js'] !== result2['a.js'], 'Added salt changes hash.');
+
+    test.done();
+  },
   etag: function(test) {
     test.expect(1);
 
