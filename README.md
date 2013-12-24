@@ -230,8 +230,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-```
-0.1.4 -  format output json, and sort it by filenames (diff a hashmap made easy). Thanks @dpolivy !
-0.1.1 -  add options.encoding for file contents reading
-0.1.0 -  first release
-```
+* 0.1.5 -  add option.salt to burst all the cache, thanks @theoephraim 
+* 0.1.4 -  format output json, and sort it by filenames (diff a hashmap made easy). Thanks @dpolivy !
+* 0.1.1 -  add options.encoding for file contents reading
+* 0.1.0 -  first release
