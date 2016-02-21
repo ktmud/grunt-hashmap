@@ -1,7 +1,7 @@
 {
   "name": "grunt-hashmap",
   "description": "Generate a hash mapping for your assets, to burst cache",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "homepage": "https://github.com/ktmud/grunt-hashmap",
   "author": {
     "name": "ktmud",
@@ -22,7 +22,7 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "grunt test"
