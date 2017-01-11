@@ -142,7 +142,7 @@ module.exports = function(grunt) {
         var srcfile = realpath(filepath);
         var destfile = path.join(dest, renamed(filepath));
         if (srcfile !== destfile) {
-          if (destfile.indexOf(dest) === -1) {
+          if (destfile.indexOf(path.normalize(dest)) === -1) {
             grunt.log.warn('Renamed target "' + destfile + '" is not in dest directory.');
           }
           grunt.file.copy(srcfile, destfile);
