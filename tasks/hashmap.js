@@ -175,7 +175,14 @@ module.exports = function(grunt) {
           grunt.file.write(jsonfile, JSON.stringify(mapping, null, 2));
           grunt.log.oklns('Hashmap "' + jsonfile + '" saved.');
         }
-        done();
+
+        // invoke callback function if provided
+        if (typeof options.done === "function") {
+          options.done(mapping, done);
+        }
+        else {
+          done();
+        }
       }
 
       function sortObject(obj) {
